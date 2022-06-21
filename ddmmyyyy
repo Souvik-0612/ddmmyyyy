@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int dd, mm, yyyy;
+    //Printing dd/mm/yyyy
+    up:
+        do{
+        cout << "Enter the date ";
+        cin >> dd;
+        cout << "Enter the month ";
+        cin >> mm;
+        cout << "Enter the year ";
+        cin >> yyyy;
+        }while((dd <= 0 || dd > 31) && (mm <= 0) || (mm > 12) && (yyyy <= 0) || (yyyy > 9999) );
+    //Check leap year
+    bool flag = false;
+    if (yyyy % 100 == 0){
+        if (yyyy % 400 == 0){
+            flag = true;
+            cout << yyyy << " is leap year.\n";
+        }
+        else 
+            cout << yyyy << " is not leap year.\n";
+    }
+    else if (yyyy % 4 == 0){
+        flag = true;
+        cout << yyyy << " is leap year.\n";
+    }
+    else
+        cout << yyyy << " is not leap year.\n";
+    //Only for February 
+    if (flag == false){ 
+        if (mm == 2 && (dd > 28)){
+            goto up;
+        }
+    }
+    cout <<"You have entered " << dd << "/" << mm << "/" << yyyy << endl;
+    return 0;
+}
